@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin_wheel</title>
+    <link rel="preload" href="./assests/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./assests/bootstrap.min.css"></noscript>
+    <!-- <link rel="stylesheet" href="./assests/bootstrap.min.css" > -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+
+<body class="flex-column">
+
+    <audio id="myAudio" src="./assests/spin_audio.mp3" type="audio/mp3"></audio>
+    <audio id="coins_audio" src="./assests/Coins_count.mp3" type="audio/mp3"></audio>
+    <audio id="crowd_cheering" src="./assests/crowd_cheering.mp3" type="audio/mp3"></audio>
+    <audio id="winner_cheer" src="./assests/winner_cheers.mp3" type="audio/mp3"></audio>
+
+    <div id="box" class="box d-flex align-items-center flex-column">
+        <img src="./assests/title.webp" alt="" class="title">
+        <img src="./assests/made.webp" alt="" class="made">
+        <!-- <img src="./assests/tag.webp" alt="" class="tag mt-2"> -->
+        <div id="wheel" class="wheel d-flex justify-content-center align-items-center mt-2">
+            <img src="./assests/wheel.webp" alt="" class="wheel_img" id="wheel_img">
+            <div id="spin_button" class="spin_button">
+                SPIN
+            </div>
+            <div id="pointer" class="pointer">
+                <div id="dot" class="dot"></div>
+            </div>
+            <img src="./assests/hand.webp" class="hand" alt="">
+        </div>
+        <div class="bottom">
+            <img src="./assests/wheel_bottom.webp" alt="Sample Image" width="200" height="200">
+
+        </div>
+        <!-- <div id="sentence" class="sentence gap-2 d-flex justify-content-center align-items-center flex-column">
+            <div id="icon1" class="icon d-flex align-items-center justify-content-center flex-row">
+                <img src="./assests/tick.webp" alt="">
+                <p class="mb-0">UPI Transaction</p>
+            </div>
+
+            <div id="icon2" class="icon d-flex align-items-center justify-content-center flex-row">
+                <img src="./assests/tick.webp" alt="">
+                <p class="mb-0">100% Guarantee</p>
+            </div>
+        </div> -->
+        <div class="marqee">
+            <p style="text-align: center; color: white;">Winner's List</p>
+            <marquee behavior="smooth" direction="up"
+                style="font-size: 12px; color: white; height: 40px; text-align: center;" class="mt-10" scrollamount="2">
+                <p>+91 950** ***** has won Rs.9500/-</p>
+
+                <p>+91 550** ***** has won Rs.3000/-</p>
+
+                <p>+91 300** ***** has won Rs.5500/-</p>
+
+                <p>+91 700** ***** has won Rs.9500/-</p>
+
+                <p>+91 800** ***** has won Rs.3000/-</p>
+
+                <p>+91 550** ***** has won Rs.9500/-</p>
+
+                <p>+91 950** ***** has won Rs.5500/-</p>
+
+                <p>+91 300** ***** has won Rs.9500/-</p>
+
+                <p>+91 700** ***** has won Rs.3000/-</p>
+
+                <p>+91 800** ***** has won Rs.9500/-</p>
+
+                <p>+91 550** ***** has won Rs.5500/-</p>
+
+                <p>+91 950** ***** has won Rs.9500/-</p>
+
+                <p>+91 300** ***** has won Rs.5500/-</p>
+
+                <p>+91 700** ***** has won Rs.3000/-</p>
+
+                <p>+91 800** ***** has won Rs.9500/-</p>
+
+                <p>+91 550** ***** has won Rs.3000/-</p>
+
+                <p>+91 950** ***** has won Rs.9500/-</p>
+
+                <p>+91 300** ***** has won Rs.9500/-</p>
+
+                <p>+91 700** ***** has won Rs.5500/-</p>
+
+                <p>+91 800** ***** has won Rs.9500/-</p>
+
+                <p>+91 550** ***** has won Rs.9500/-</p>
+
+                <p>+91 950** ***** has won Rs.5500/-</p>
+
+                <p>+91 300** ***** has won Rs.9500/-</p>
+
+                <p>+91 700** ***** has won Rs.3000/-</p>
+
+                <p>+91 800** ***** has won Rs.5500/-</p>
+
+                <p>+91 550** ***** has won Rs.9500/-</p>
+
+                <p>+91 950** ***** has won Rs.3000/-</p>
+
+                <p>+91 300** ***** has won Rs.9500/-</p>
+
+                <p>+91 700** ***** has won Rs.5500/-</p>
+
+                <p>+91 800** ***** has won Rs.3000/-</p>
+
+                <p>+91 550** ***** has won Rs.9500/-</p>
+
+                <p>+91 950** ***** has won Rs.5500/-</p>
+
+                <p>+91 300** ***** has won Rs.9500/-</p>
+
+            </marquee>
+        </div>
+    </div>
+
+    <div id="retry_popup" class="retry_popup">
+        <!-- <div id="retry" class="retry d-flex flex-column"> -->
+            <!-- <div id="close" class="close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                </svg>
+            </div> -->
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="./assests/dull.webp" alt="" style="width: 75%;">
+            </div>
+        <!-- </div> -->
+        <div class="retry_icon d-flex  align-items-center flex-row heartbeat justify-content-center" id="retry_button">
+            <img src="./assests/retry.webp" alt="">
+        </div>
+    </div>
+
+    <div id="final_popup" class="final_popup">
+        <canvas id="canvas"></canvas>
+        <!-- <h1 class="congrats" style="text-align: center;"><i>HURRAY ! CONGRATULATIONS !</i></h1> -->
+        <!-- <p class="mt-10">Just click on <strong>Claim Now</strong> to receive the deal.</p> -->
+        <div class="popup-con ">
+            <!-- <img src="./assets/new/giftbox.webp   " width="80px" class="coin_bag"> -->
+            <div>
+                <img src="./assests/pop-up.webp" alt="" width="100%" style="width: 100%; margin-bottom: 20px;">
+            </div>
+
+            <div class="time mt-5">
+                <h2 class="mb-4" id="heading" style="color: red; font-size: 14px; ">Limited Time
+                    Offer Remaining</h2>
+                <div class="timer-container" id="timer" style="font-size: 16px; font-weight: 600;">
+                    <div id="hours" class="timer-box">00</div>
+                    <div class="dots">:</div>
+                    <div id="minutes" class="timer-box">01</div>
+                    <div class="dots">:</div>
+                    <div id="seconds" class="timer-box">30</div>
+                </div>
+            </div>
+
+            <a href="https://www.google.com" target="_blank"><button class="claim-amount mt-20 pulsate-bck"
+                    type="button" style="width: 70%;">Withdraw Now</button></a>
+
+            <p class="mt-10" style="font-size: 12px;">Hurry up! Valid for few minutes only.</p>
+        </div>
+
+        <!-- <div class="sub-heading-offer">
+            <div class="valid_time"
+                style="display: flex; align-items: center; justify-content: center; flex-direction: column; font-size: 16px;">
+                <p>Offer Valid Till</p>
+                <div id="timer" style="font-weight: 600; margin-top: 5px;"></div>
+            </div>
+        </div> -->
+        <div class="steps">
+            <h2>Steps to claim the offer</h2>
+            <p><span>Step 1</span>Download</p>
+            <p><span>Step 2</span>Install</p>
+            <p><span>Step 3</span>Register</p>
+        </div>
+
+    </div>
+
+</body>
+
+
+<script>
+    // -----------------------------
+    // GLOBAL CONFIGURATION & VARIABLES
+    // -----------------------------
+    const spinDuration = 4000;  // Duration (ms) for the spin animation
+    const finalPopupDelay = 500; // Additional delay (ms) before the final popup appears
+    let isFirstSpin = true;     // Track if it's the first spin
+
+    // Retrieve URL parameter (e.g., ?id=15000)
+    const urlParams = new URLSearchParams(window.location.search);
+    let spinParam = urlParams.get('id');
+
+    // Debug: Check URL parameter
+    console.log('URL parameter (id):', spinParam);
+
+    // -----------------------------
+    // SECTION 1: First Spin (Bomb Angle)
+    // -----------------------------
+    document.getElementById('spin_button').addEventListener('click', () => {
+        console.log('Spin button clicked');
+
+        const wheel = document.getElementById('wheel_img');  // The spinning wheel image element
+        const spinAudio = document.getElementById('myAudio');  // Sound for spinning
+
+        // Debug: Check if wheel and audio exist
+        if (!wheel) console.error('Wheel element not found!');
+        if (!spinAudio) console.error('Spin audio element not found!');
+
+        // Remove any auto-rotation class if present
+        wheel.classList.remove('auto-rotate');
+
+        // Play the spin sound
+        spinAudio.play();
+
+        let degree;  // This value will hold the target rotation angle
+
+        if (isFirstSpin) {
+            console.log('First spin logic activated');
+            // First spin always rotates to the bomb angle
+            degree = 3481;
+            isFirstSpin = false;  // Mark the first spin as done
+
+            // Rotate the wheel with a smooth 4-second transition
+            wheel.style.transition = "transform 4s ease-out";
+            wheel.style.transform = `rotate(${degree}deg)`;
+
+            // After the spin completes...
+            setTimeout(() => {
+                console.log('First spin completed: Wheel stopped at bomb angle');
+
+                // Hide the spin-wheel container
+                const box = document.querySelector('.box');
+                if (box) {
+                    box.style.display = 'none';
+                } else {
+                    console.error('.box element not found!');
+                }
+
+                // Display the retry popup
+                const retryPopup = document.getElementById('retry_popup');
+                if (retryPopup) {
+                    retryPopup.style.display = 'flex';
+                } else {
+                    console.error('Retry popup element not found!');
+                }
+
+                // Play sound for the retry popup
+                const coinsAudio = document.getElementById('coins_audio');
+                if (coinsAudio) {
+                    coinsAudio.play();
+                } else {
+                    console.error('Coins audio element not found!');
+                }
+            }, spinDuration);
+        } else {
+            console.log('Second spin logic activated');
+            // -----------------------------
+            // SECTION 3: Second Spin Using URL Parameter
+            // -----------------------------
+            if (spinParam === '5500') {
+                degree = 4499;
+            } else if (spinParam === '9500') {
+                degree = 4383;
+            } else if (spinParam === '2500') {
+                degree = 4261;
+            } else {
+                // Default case when id is missing or invalid
+                degree = 4383;
+                spinParam = '9500';
+            }
+
+            console.log('Degree of rotation:', degree);
+
+            // Rotate the wheel using the determined angle
+            wheel.style.transition = "transform 4s ease-out";
+            wheel.style.transform = `rotate(${degree}deg)`;
+
+            // After the spin completes...
+            setTimeout(() => {
+                console.log(`Second spin completed: Wheel stopped at prize ID: ${spinParam}`);
+
+                // Add a delay before showing the final popup
+                setTimeout(() => {
+                    // -----------------------------
+                    // SECTION 4: Final Popup
+                    // -----------------------------
+                    const timer = document.getElementById('timer');
+                    const hours = document.getElementById('hours');
+                    const minutes = document.getElementById('minutes');
+                    const seconds = document.getElementById('seconds');
+
+                    let timeLeft = 90;
+
+                    const countdown = setInterval(() => {
+                        if (timeLeft > 0) {
+                            timeLeft--;
+                            hours.textContent = Math.floor(timeLeft / 3600).toString().padStart(2, '0');
+                            minutes.textContent = Math.floor((timeLeft % 3600) / 60).toString().padStart(2, '0');
+                            seconds.textContent = (timeLeft % 60).toString().padStart(2, '0');
+                        } else {
+                            clearInterval(countdown);
+                        }
+                    }, 1000);
+                    const finalPopup = document.getElementById('final_popup');
+                    if (finalPopup) {
+                        finalPopup.style.display = 'flex';
+                        console.log('Final popup displayed');
+                    } else {
+                        console.error('Final popup element not found!');
+                    }
+
+                    // Play the final popup sound
+                    const winnerCheerAudio = document.getElementById('winner_cheer');
+                    if (winnerCheerAudio) {
+                        winnerCheerAudio.play();
+                        console.log('Winner cheer audio played');
+                    } else {
+                        console.error('Winner cheer audio element not found!');
+                    }
+                }, finalPopupDelay); // Delay before showing the final popup
+
+            }, spinDuration);
+        }
+    });
+
+    // -----------------------------
+    // SECTION 2: Retry Popup Buttons
+    // -----------------------------
+    document.getElementById('retry_button').addEventListener('click', () => {
+        console.log('Retry button clicked');
+
+        // Hide the retry popup
+        const retryPopup = document.getElementById('retry_popup');
+        if (retryPopup) {
+            retryPopup.style.display = 'none';
+            console.log('Retry popup hidden');
+        } else {
+            console.error('Retry popup element not found!');
+        }
+
+        // Reset the wheel's visual state
+        const wheel = document.getElementById('wheel_img');
+        if (wheel) {
+            wheel.style.transition = "none";
+            wheel.style.transform = "rotate(0deg)";
+            console.log('Wheel reset for next spin');
+        } else {
+            console.error('Wheel element not found!');
+        }
+
+        // Show the spin wheel container again
+        const box = document.querySelector('.box');
+        if (box) {
+            box.style.display = 'flex';
+            console.log('Spin wheel container displayed');
+        } else {
+            console.error('.box element not found!');
+        }
+    });
+
+</script>
+
+
+
+<script>
+    let W = window.innerWidth;
+    let H = window.innerHeight;
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const maxConfettis = 10;
+    const particles = [];
+
+    const possibleColors = [
+        "DodgerBlue",
+        "OliveDrab",
+        "Gold",
+        "Pink",
+        "SlateBlue",
+        "LightBlue",
+        "Gold",
+        "Violet",
+        "PaleGreen",
+        "SteelBlue",
+        "SandyBrown",
+        "Chocolate",
+        "Crimson"
+    ];
+
+    function randomFromTo(from, to) {
+        return Math.floor(Math.random() * (to - from + 1) + from);
+    }
+
+    function confettiParticle() {
+        this.x = Math.random() * W; // x
+        this.y = Math.random() * H - H; // y
+        this.r = randomFromTo(11, 33); // radius
+        this.d = Math.random() * maxConfettis + 11;
+        this.color =
+            possibleColors[Math.floor(Math.random() * possibleColors.length)];
+        this.tilt = Math.floor(Math.random() * 33) - 11;
+        this.tiltAngleIncremental = Math.random() * 0.07 + 0.05;
+        this.tiltAngle = 0;
+
+        this.draw = function () {
+            context.beginPath();
+            context.lineWidth = this.r / 2;
+            context.strokeStyle = this.color;
+            context.moveTo(this.x + this.tilt + this.r / 3, this.y);
+            context.lineTo(this.x + this.tilt, this.y + this.tilt + this.r / 5);
+            return context.stroke();
+        };
+    }
+
+    function Draw() {
+        const results = [];
+
+        // Magical recursive functional love
+        requestAnimationFrame(Draw);
+
+        context.clearRect(0, 0, W, window.innerHeight);
+
+        for (var i = 0; i < maxConfettis; i++) {
+            results.push(particles[i].draw());
+        }
+
+        let particle = {};
+        let remainingFlakes = 0;
+        for (var i = 0; i < maxConfettis; i++) {
+            particle = particles[i];
+
+            particle.tiltAngle += particle.tiltAngleIncremental;
+            particle.y += (Math.cos(particle.d) + 3 + particle.r / 2) / 2;
+            particle.tilt = Math.sin(particle.tiltAngle - i / 3) * 15;
+
+            if (particle.y <= H) remainingFlakes++;
+
+            // If a confetti has fluttered out of view,
+            // bring it back to above the viewport and let if re-fall.
+            if (particle.x > W + 30 || particle.x < -30 || particle.y > H) {
+                particle.x = Math.random() * W;
+                particle.y = -30;
+                particle.tilt = Math.floor(Math.random() * 10) - 20;
+            }
+        }
+
+        return results;
+    }
+
+    window.addEventListener(
+        "resize",
+        function () {
+            W = window.innerWidth;
+            H = window.innerHeight;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        },
+        false
+    );
+
+    // Push new confetti objects to particles[]
+    for (var i = 0; i < maxConfettis; i++) {
+        particles.push(new confettiParticle());
+    }
+
+    // Initialize
+    canvas.width = W;
+    canvas.height = H;
+    Draw();
+</script>
+
+
+
+</html>
